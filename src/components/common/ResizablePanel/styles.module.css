@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+}
+
+.left {
+  display: flex;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.right {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.resizer {
+  width: 4px;
+  background-color: transparent;
+  cursor: col-resize;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.resizer::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 24px;
+  background-color: var(--color-border);
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.resizer:hover,
+.resizer.dragging {
+  background-color: var(--color-primary);
+}
+
+.resizer:hover::after,
+.resizer.dragging::after {
+  opacity: 1;
+  background-color: var(--color-primary);
+}

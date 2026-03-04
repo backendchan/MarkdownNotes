@@ -1,0 +1,54 @@
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.editorArea {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+}
+
+.empty h2 {
+  margin-bottom: 12px;
+  color: var(--color-text-primary);
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 18px;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 1199px) {
+  .editorArea :global(.right) {
+    display: none;
+  }
+
+  .editorArea :global(.resizer) {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .main :global(.left) {
+    display: none;
+  }
+
+  .main :global(.resizer) {
+    display: none;
+  }
+}

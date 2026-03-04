@@ -1,0 +1,86 @@
+.sidebar {
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-secondary);
+}
+
+.tagsSection {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tagsHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.tagsIcon {
+  font-size: 12px;
+}
+
+.clearTagBtn {
+  margin-left: auto;
+  padding: 0 4px;
+  font-size: 12px;
+  height: auto;
+  line-height: 1;
+}
+
+.tagsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.filterTag {
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0.7;
+}
+
+.filterTag:hover {
+  opacity: 1;
+}
+
+.activeTag {
+  opacity: 1;
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.toolbar {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sortSelect {
+  flex: 1;
+  min-width: 0;
+}
+
+.sortDirectionBtn {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.sortDirectionBtn:hover {
+  color: var(--color-primary);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.empty {
+  padding: 40px 20px;
+}

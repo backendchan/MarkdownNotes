@@ -1,0 +1,114 @@
+.folderList {
+  margin-bottom: 16px;
+}
+
+.folderHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  color: var(--color-text-secondary);
+}
+
+.folderTitle {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.addIcon {
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.addIcon:hover {
+  color: var(--color-primary);
+}
+
+.folderItems {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.folderItem {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  gap: 8px;
+}
+
+.folderItem:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.folderItemActive {
+  background-color: var(--color-primary-bg);
+}
+
+.folderItemActive:hover {
+  background-color: var(--color-primary-bg);
+}
+
+.folderIcon {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.folderItemActive .folderIcon {
+  color: var(--color-primary);
+}
+
+.folderName {
+  flex: 1;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folderItemActive .folderName {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.folderCount {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  background-color: var(--color-bg-secondary);
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.folderItemActive .folderCount {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.folderNameInput {
+  flex: 1;
+  font-size: 14px;
+}
+
+.moreIcon {
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.folderItem:hover .moreIcon {
+  opacity: 1;
+}
+
+.moreIcon:hover {
+  color: var(--color-text-primary);
+}

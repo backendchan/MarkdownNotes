@@ -1,0 +1,11 @@
+.folderSelector {
+  min-width: 100px;
+}
+
+.folderSelector :global(.ant-select-selector) {
+  padding: 0 8px !important;
+}
+
+.folderSelector :global(.ant-select-selection-item) {
+  font-size: 12px;
+}

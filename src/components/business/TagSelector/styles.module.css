@@ -1,0 +1,61 @@
+.container {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+}
+
+.tagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.popoverContent {
+  max-width: 280px;
+}
+
+.existingTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 12px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.tagItem {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.tagItem:hover {
+  opacity: 0.8;
+}
+
+.emptyHint {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+
+.addTagSection {
+  border-top: 1px solid var(--color-border);
+  padding-top: 12px;
+}
+
+.tagInput {
+  width: 100%;
+}
+
+.addBtn {
+  width: 100%;
+}
+
+.manageBtn {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+
+.manageBtn:hover {
+  color: var(--color-primary);
+}
