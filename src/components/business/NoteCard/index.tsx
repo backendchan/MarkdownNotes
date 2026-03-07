@@ -1,5 +1,5 @@
-import { Popconfirm, Dropdown, Tag } from 'antd';
-import { DeleteOutlined, PushpinOutlined, ExportOutlined, MoreOutlined } from '@ant-design/icons';
+import { Popconfirm, Dropdown, Tag, message } from 'antd';
+import { DeleteOutlined, PushpinOutlined, ExportOutlined, MoreOutlined, FilePdfOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import type { Note } from '../../../types';
 import { formatDate, getPreviewText } from '../../../utils';
@@ -25,6 +25,15 @@ export const NoteCard = ({ note, isActive, onClick, onDelete }: NoteCardProps) =
     exportImportService.exportNoteAsMarkdown(note);
   };
 
+  const handleExportPdf = async () => {
+    try {
+      await exportImportService.exportNoteAsPdf(note);
+      message.success('PDF 导出成功');
+    } catch {
+      message.error('PDF 导出失败');
+    }
+  };
+
   const getTagColor = (tagName: string): string => {
     const tag = tags.find((t) => t.name === tagName);
     return tag?.color || '#f50';
@@ -36,6 +45,12 @@ export const NoteCard = ({ note, isActive, onClick, onDelete }: NoteCardProps) =
       icon: <ExportOutlined />,
       label: '导出为 Markdown',
       onClick: handleExport,
+    },
+    {
+      key: 'exportPdf',
+      icon: <FilePdfOutlined />,
+      label: '导出为 PDF',
+      onClick: handleExportPdf,
     },
     {
       type: 'divider' as const,
