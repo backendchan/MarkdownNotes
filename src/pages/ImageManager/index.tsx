@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Button, Table, Modal, Space, message, Popconfirm, Image, Typography, Card, Empty } from 'antd';
-import { DeleteOutlined, PictureOutlined, ArrowLeftOutlined, CopyOutlined } from '@ant-design/icons';
+import { Button, Table, Modal, Space, message, Popconfirm, Typography, Card, Empty } from 'antd';
+import { DeleteOutlined, ArrowLeftOutlined, CopyOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { imageService } from '../../services';
 import { Layout } from '../../components';
@@ -8,6 +8,41 @@ import type { ImageInfo } from '../../types';
 import styles from './styles.module.css';
 
 const { Text } = Typography;
+
+const ImageThumbnail = ({ imageId, onClick }: { imageId: string; onClick: () => void }) => {
+  const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
+
+  useEffect(() => {
+    let mounted = true;
+    const loadThumbnail = async () => {
+      const blob = await imageService.getImageData(imageId);
+      if (blob && mounted) {
+        const url = URL.createObjectURL(blob);
+        setThumbnailUrl(url);
+      }
+    };
+    loadThumbnail();
+    return () => {
+      mounted = false;
+      if (thumbnailUrl) {
+        URL.revokeObjectURL(thumbnailUrl);
+      }
+    };
+  }, [imageId]);
+
+  if (!thumbnailUrl) {
+    return <div className={styles.previewThumb} />;
+  }
+
+  return (
+    <img
+      src={thumbnailUrl}
+      alt="thumbnail"
+      className={styles.previewThumb}
+      onClick={onClick}
+    />
+  );
+};
 
 export const ImageManagerPage = () => {
   const navigate = useNavigate();
@@ -107,12 +142,10 @@ export const ImageManagerPage = () => {
       key: 'preview',
       width: 80,
       render: (id: string, record: ImageInfo) => (
-        <div
-          className={styles.previewThumb}
+        <ImageThumbnail
+          imageId={id}
           onClick={() => handlePreview(record)}
-        >
-          <PictureOutlined style={{ fontSize: 24, color: '#999' }} />
-        </div>
+        />
       ),
     },
     {

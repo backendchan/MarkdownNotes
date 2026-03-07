@@ -44,9 +44,8 @@
 .previewThumb {
   width: 48px;
   height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  object-fit: cover;
   background-color: var(--color-bg-secondary, #fafafa);
   border-radius: 4px;
   cursor: pointer;
@@ -54,7 +53,8 @@
 }
 
 .previewThumb:hover {
-  background-color: var(--color-bg-hover, #f0f5ff);
+  opacity: 0.8;
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
