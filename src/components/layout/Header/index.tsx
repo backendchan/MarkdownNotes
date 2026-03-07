@@ -1,5 +1,5 @@
 import { Button, Tooltip } from 'antd';
-import { PlusOutlined, SettingOutlined } from '@ant-design/icons';
+import { PlusOutlined, SettingOutlined, PictureOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
 
@@ -18,6 +18,9 @@ export const Header = ({ onCreateNote }: HeaderProps) => {
           <Button type="primary" icon={<PlusOutlined />} onClick={onCreateNote}>
             新建
           </Button>
+        </Tooltip>
+        <Tooltip title="图片管理">
+          <Button icon={<PictureOutlined />} onClick={() => navigate('/images')} />
         </Tooltip>
         <Tooltip title="设置">
           <Button icon={<SettingOutlined />} onClick={() => navigate('/settings')} />
