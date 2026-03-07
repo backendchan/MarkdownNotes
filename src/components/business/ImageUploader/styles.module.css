@@ -1,0 +1,247 @@
+.uploader {
+  padding: 8px 0;
+}
+
+.dropZone {
+  border: 2px dashed var(--color-border, #d9d9d9);
+  border-radius: 8px;
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: var(--color-bg-secondary, #fafafa);
+}
+
+.dropZone:hover {
+  border-color: var(--color-primary, #1890ff);
+  background-color: var(--color-bg-hover, #f0f5ff);
+}
+
+.uploadIcon {
+  font-size: 48px;
+  color: var(--color-text-secondary, #8c8c8c);
+  margin-bottom: 16px;
+}
+
+.dropText {
+  font-size: 16px;
+  color: var(--color-text-primary, #262626);
+  margin-bottom: 8px;
+}
+
+.dropHint {
+  font-size: 14px;
+  color: var(--color-text-secondary, #8c8c8c);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.previewSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.previewContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg-secondary, #fafafa);
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 200px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.removeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.removeButton:hover {
+  background-color: rgba(255, 77, 79, 0.9);
+}
+
+.removeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fileInfo {
+  padding: 12px;
+  background-color: var(--color-bg-secondary, #fafafa);
+  border-radius: 8px;
+}
+
+.fileInfo p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: var(--color-text-primary, #262626);
+}
+
+.sizeSelector {
+  padding: 12px;
+  background-color: var(--color-bg-secondary, #fafafa);
+  border-radius: 8px;
+}
+
+.sizeLabel {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: var(--color-text-primary, #262626);
+}
+
+.sizeOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sizeButton {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border, #d9d9d9);
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  color: var(--color-text-primary, #262626);
+}
+
+.sizeButton:hover {
+  border-color: var(--color-primary, #1890ff);
+  color: var(--color-primary, #1890ff);
+}
+
+.sizeButtonActive {
+  border-color: var(--color-primary, #1890ff);
+  background-color: var(--color-primary, #1890ff);
+  color: white;
+}
+
+.sizeButtonActive:hover {
+  background-color: var(--color-primary-hover, #40a9ff);
+  color: white;
+}
+
+.customSize {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border, #f0f0f0);
+}
+
+.customSize span {
+  font-size: 14px;
+  color: var(--color-text-secondary, #8c8c8c);
+}
+
+.widthSlider {
+  margin-top: 8px;
+}
+
+.progressSection {
+  padding: 16px;
+  text-align: center;
+}
+
+.progressText {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-text-secondary, #8c8c8c);
+}
+
+.successSection {
+  padding: 24px;
+  text-align: center;
+  background-color: #f6ffed;
+  border-radius: 8px;
+  border: 1px solid #b7eb8f;
+}
+
+.successIcon {
+  font-size: 48px;
+  color: #52c41a;
+  margin-bottom: 8px;
+}
+
+.successSection p {
+  font-size: 16px;
+  color: #52c41a;
+  margin: 0;
+}
+
+.errorSection {
+  padding: 16px;
+  background-color: #fff2f0;
+  border-radius: 8px;
+  border: 1px solid #ffccc7;
+}
+
+.errorText {
+  color: #ff4d4f;
+  margin: 0;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+@media (max-width: 640px) {
+  .dropZone {
+    padding: 32px 16px;
+  }
+
+  .uploadIcon {
+    font-size: 36px;
+  }
+
+  .dropText {
+    font-size: 14px;
+  }
+
+  .sizeOptions {
+    flex-direction: column;
+  }
+
+  .sizeButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  .previewContainer {
+    min-height: 150px;
+    max-height: 200px;
+  }
+
+  .previewImage {
+    max-height: 180px;
+  }
+}

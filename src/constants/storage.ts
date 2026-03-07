@@ -5,6 +5,7 @@ export const STORAGE_KEYS = {
   VERSION: 'md-notes:version',
   TAGS: 'md-notes:tags',
   FOLDERS: 'md-notes:folders',
+  IMAGES: 'md-notes:images',
 } as const;
 
 export const DATA_VERSION = '1.0.0';

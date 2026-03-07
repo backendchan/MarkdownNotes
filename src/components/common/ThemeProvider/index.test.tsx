@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import { ThemeProvider } from './index';
 import { useSettingStore } from '../../../store';
 
@@ -142,7 +142,7 @@ describe('ThemeProvider', () => {
   });
 
   it('should update theme when settings change', () => {
-    const { rerender } = render(
+    render(
       <ThemeProvider>
         <div>Test</div>
       </ThemeProvider>
@@ -150,12 +150,9 @@ describe('ThemeProvider', () => {
 
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
 
-    useSettingStore.getState().updateSettings({ theme: 'dark' });
-    rerender(
-      <ThemeProvider>
-        <div>Test</div>
-      </ThemeProvider>
-    );
+    act(() => {
+      useSettingStore.getState().updateSettings({ theme: 'dark' });
+    });
 
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
   });

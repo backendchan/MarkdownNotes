@@ -7,3 +7,4 @@ export { TagSelector } from './TagSelector';
 export { AdvancedSearch } from './AdvancedSearch';
 export { FolderList } from './FolderList';
 export { FolderSelector } from './FolderSelector';
+export { ImageUploader } from './ImageUploader';

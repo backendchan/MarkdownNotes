@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, useMemo } from 'react';
+import { useRef, useEffect, useCallback, useMemo, useState } from 'react';
 import { useNoteStore, useSettingStore, useTagStore } from '../../../store';
 import { storageService } from '../../../services';
 import { extractTitle } from '../../../services/markdown';
@@ -7,6 +7,7 @@ import type { ToolbarAction } from '../EditorToolbar';
 import { EditorToolbar } from '../EditorToolbar';
 import { TagSelector } from '../TagSelector';
 import { FolderSelector } from '../FolderSelector';
+import { ImageUploader } from '../ImageUploader';
 import styles from './styles.module.css';
 
 interface EditorProps {
@@ -20,6 +21,7 @@ export const Editor = ({ noteId, onScroll }: EditorProps) => {
   const { settings } = useSettingStore();
   const { tags, setTags } = useTagStore();
   const note = notes.find((n) => n.id === noteId);
+  const [isImageUploaderOpen, setIsImageUploaderOpen] = useState(false);
 
   const saveNote = useCallback(
     async (content: string, noteTags?: string[]) => {
@@ -60,6 +62,11 @@ export const Editor = ({ noteId, onScroll }: EditorProps) => {
   };
 
   const handleToolbarAction = useCallback((action: ToolbarAction) => {
+    if (action.type === 'image') {
+      setIsImageUploaderOpen(true);
+      return;
+    }
+
     const textarea = textareaRef.current;
     if (!textarea) return;
 
@@ -70,6 +77,22 @@ export const Editor = ({ noteId, onScroll }: EditorProps) => {
     setSelection(textarea, result.selection);
     
     debouncedSave(result.text);
+  }, [debouncedSave]);
+
+  const handleImageInsert = useCallback((markdown: string) => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+
+    const selection = getSelection(textarea);
+    const newContent = textarea.value.substring(0, selection.start) + 
+                       markdown + 
+                       textarea.value.substring(selection.end);
+    
+    textarea.value = newContent;
+    const newPosition = selection.start + markdown.length;
+    setSelection(textarea, { start: newPosition, end: newPosition });
+    
+    debouncedSave(newContent);
   }, [debouncedSave]);
 
   const handleTagsChange = useCallback(
@@ -119,6 +142,12 @@ export const Editor = ({ noteId, onScroll }: EditorProps) => {
           fontFamily: settings.editorFontFamily,
         }}
         spellCheck={false}
+      />
+      <ImageUploader
+        open={isImageUploaderOpen}
+        onClose={() => setIsImageUploaderOpen(false)}
+        onInsert={handleImageInsert}
+        noteId={noteId}
       />
     </div>
   );
