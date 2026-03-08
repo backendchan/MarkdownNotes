@@ -174,7 +174,7 @@ md.inline.ruler.before('image', 'image_with_size', (state, silent) => {
 
   let pos = start + 2;
   let labelStart = pos;
-  let labelEnd: number;
+  let labelEnd: number | undefined;
   
   while (pos < max) {
     const ch = state.src.charCodeAt(pos);
@@ -199,7 +199,7 @@ md.inline.ruler.before('image', 'image_with_size', (state, silent) => {
   
   pos++;
   const hrefStart = pos;
-  let hrefEnd: number;
+  let hrefEnd: number | undefined;
   
   while (pos < max) {
     const ch = state.src.charCodeAt(pos);
